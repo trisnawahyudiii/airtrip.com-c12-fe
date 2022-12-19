@@ -1,3 +1,270 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --ff-poppins: "Poppins", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+html {
+  font-family: var(--ff-poppins);
+  scroll-behavior: smooth;
+}
+
+button,
+ion-icon {
+  display: block;
+}
+
+.container {
+  padding-inline: 15px;
+}
+
+@media (min-width: 580px) {
+  /**
+     * REUSED STYLE
+     */
+
+  .container {
+    max-width: 580px;
+    margin-inline: auto;
+  }
+
+  .btn {
+    --fs-5: 16px;
+    --padding: 12px 30px;
+  }
+
+  section:not(.cta) :is(.section-subtitle, .section-title, .section-text) {
+    text-align: center;
+  }
+
+  .section-text {
+    margin-bottom: 40px;
+  }
+
+  .card-text {
+    --fs-5: 15px;
+  }
+
+  /**
+     * POPULAR
+     */
+
+  .popular-card .card-content {
+    right: auto;
+  }
+
+  /**
+     * FOOTER
+     */
+
+  .footer .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-form {
+    grid-column: span 2;
+  }
+
+  .footer-bottom {
+    text-align: left;
+  }
+
+  .copyright {
+    margin-bottom: 0;
+  }
+
+  .footer-bottom-list {
+    justify-content: flex-end;
+  }
+}
+
+/**
+   * responsive for larger than 768px screen
+   */
+
+@media (min-width: 768px) {
+  /**
+     * CUSTOM PROPERTY
+     */
+
+  :root {
+    /**
+       * typography
+       */
+
+    --fs-5: 15px;
+  }
+
+  /**
+     * REUSED STYLE
+     */
+
+  .container {
+    max-width: 800px;
+  }
+
+  .section-text {
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  /**
+     * POPULAR
+     */
+
+  .popular-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .popular-list > li:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .popular-card .card-content {
+    right: 20px;
+  }
+
+  /**
+     * PACKAGE
+     */
+
+  .package-list {
+    margin-bottom: 50px;
+  }
+
+  .package-list > li:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .package-card {
+    display: grid;
+    grid-template-columns: 1.3fr 1.5fr 1fr;
+  }
+
+  .package-card .card-banner {
+    height: 100%;
+  }
+
+  .package-card .card-content {
+    padding: 40px;
+  }
+
+  .package-card .card-price {
+    display: grid;
+    place-content: center;
+  }
+
+  .package-card .card-price .wrapper {
+    margin-bottom: 15px;
+  }
+
+  /**
+     * FOOTER
+     */
+
+  .form-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-form .input-field {
+    margin-bottom: 0;
+  }
+
+  .footer-form .btn {
+    width: max-content;
+  }
+}
+
+/**
+   * responsive for larger than 992px screen
+   */
+
+@media (min-width: 992px) {
+  /**
+     * REUSED STYLE
+     */
+
+  .container {
+    max-width: 1050px;
+  }
+
+  /**
+     * POPULAR
+     */
+
+  .popular-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /**
+     * PACKAGE
+     */
+
+  .meta-box {
+    --fs-8: 13px;
+  }
+
+  .meta-box > ion-icon {
+    font-size: 15px;
+  }
+
+  /**
+     * FOOTER
+     */
+
+  .footer-top .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+
+  .footer-form {
+    grid-column: unset;
+  }
+
+  .form-wrapper {
+    flex-direction: column;
+  }
+
+  .footer-form .btn {
+    width: 100%;
+  }
+}
+
+/**
+   * responsive for larger than 1200px screen
+   */
+
+@media (min-width: 1200px) {
+  /**
+     * CUSTOM PROPERTY
+     */
+
+  :root {
+    /**
+       * spacing
+       */
+
+    --section-padding: 80px;
+  }
+
+  /**
+     * REUSED STYLE
+     */
+
+  .container {
+    max-width: 1180px;
+  }
+}
