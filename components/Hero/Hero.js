@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "next/link";
 
+// components
+import CariTiketForm from "../CariTiketForm/CariTiketForm";
+
 const Hero = () => {
   return (
     <div className="relative flex items-center content-center justify-center pt-16 pb-32 min-h-screen-75 overflow-hidden">
-      
       {/* background image */}
       <div
         className="absolute w-full h-full bg-center bg-cover top-8"
@@ -32,7 +34,7 @@ const Hero = () => {
                 anda penting bagi kami. Rencanakan perjalanan anda bersama kami
                 sekarang, dan lihatlah langit yang tersenyum.
               </p>
-              
+
               {/* button cari tiket */}
               <div className="mt-12">
                 <Link href="/caritiket" legacyBehavior>
@@ -47,6 +49,7 @@ const Hero = () => {
       </div>
 
       {/* form cari tiket */}
+      
     </div>
   );
 };

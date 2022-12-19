@@ -5,6 +5,7 @@ import Head from "next/head";
 // components
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
+import CariTiketForm from "../components/CariTiketForm/CariTiketForm";
 
 // other
 
@@ -21,7 +22,7 @@ const Home = () => {
       <main>
         <Navbar transparent />
         <Hero />
-        
+        <CariTiketForm />
       </main>
     </>
   );
