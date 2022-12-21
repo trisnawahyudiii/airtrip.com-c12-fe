@@ -23,11 +23,20 @@ ion-icon {
   padding-inline: 15px;
 }
 
-@media (min-width: 580px) {
-  /**
-     * REUSED STYLE
-     */
+input[type="text"]:focus {
+  --tw-ring-offset-width: 0;
+  --tw-ring-offset-shadow: none;
+}
 
+[type="checkbox"]:focus:not(:focus-visible) {
+  @apply focus:ring-0 focus:ring-offset-0;
+}
+
+[type="checkbox"]:focus-visible {
+  @apply ring-2 ring-offset-2;
+}
+
+@media (min-width: 580px) {
   .container {
     max-width: 580px;
     margin-inline: auto;

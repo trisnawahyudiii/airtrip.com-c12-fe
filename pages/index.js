@@ -23,6 +23,7 @@ const Home = () => {
         <Navbar transparent />
         <Hero />
         <CariTiketForm />
+        <Hero />
       </main>
     </>
   );

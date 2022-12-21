@@ -24,7 +24,7 @@ const Hero = () => {
       {/* hero text */}
       <div className="container relative mx-auto">
         <div className="flex flex-wrap items-center">
-          <div className="w-full px-2 mx-auto text-center w-[60%]">
+          <div className="px-2 mx-auto text-center w-[60%]">
             <div className="px-8">
               <h1 className="text-4xl font-semibold text-white">
                 Journey to Explore world
