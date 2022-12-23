@@ -21,9 +21,12 @@ const Home = () => {
       </Head>
       <main>
         <Navbar transparent />
-        <Hero />
-        <CariTiketForm />
-        <Hero />
+        <div className="relative">
+          <Hero />
+          <div className="absolute top-[75%] w-full">
+            <CariTiketForm />
+          </div>
+        </div>
       </main>
     </>
   );

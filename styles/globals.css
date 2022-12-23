@@ -28,6 +28,22 @@ input[type="text"]:focus {
   --tw-ring-offset-shadow: none;
 }
 
+input[type="tel"]:focus {
+  --tw-ring-offset-width: 0;
+  --tw-ring-offset-shadow: none;
+}
+
+input[type="tel"] {
+  padding-top: 16.5px;
+  padding-bottom: 16.5px;
+  padding-left: 14px;
+  padding-right: 0;
+}
+
+.MuiFormControl-root {
+  width: 100%;
+}
+
 [type="checkbox"]:focus:not(:focus-visible) {
   @apply focus:ring-0 focus:ring-offset-0;
 }
