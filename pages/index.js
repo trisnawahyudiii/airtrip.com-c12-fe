@@ -6,6 +6,9 @@ import Head from "next/head";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
 import CariTiketForm from "../components/CariTiketForm/CariTiketForm";
+import OurServices from "../components/OurServices/OurServices";
+import Package from "../components/Package/Package";
+import Footer from "../components/Footers/Footer";
 
 // other
 
@@ -27,6 +30,9 @@ const Home = () => {
             <CariTiketForm />
           </div>
         </div>
+        <OurServices />
+        <Package />
+        <Footer />
       </main>
     </>
   );
