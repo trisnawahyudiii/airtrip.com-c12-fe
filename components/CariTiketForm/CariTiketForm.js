@@ -54,6 +54,65 @@ const CariTiketForm = (props) => {
     };
   });
 
+  const handleSubmit = () => {
+    const body = {
+      from: from,
+      to: to,
+      departureDate: departureDate,
+      flgiht_class: flightClass,
+    };
+  };
+
+  const validateOneWay = (from, to, departureDate) => {
+    console.log(from, to, departureDate);
+    console.log("index from", airport_options.indexOf(from));
+    const validFrom =
+      airport_options.findIndex((object) => {
+        return object.id === from.id;
+      }) > -1;
+    const validTo =
+      airport_options.findIndex((object) => {
+        return object.id === to.id;
+      }) > -1;
+    const validDate = departureDate > new Date();
+
+    if (validFrom && validTo && validDate) {
+      alert("everything ok!");
+      return true;
+    } else {
+      if (!validFrom) alert("from required!");
+      if (!validTo) alert("to required!");
+      if (!validDate) alert("please select a date that later than today!");
+    }
+  };
+
+  const validateRoundtrip = (from, to, departureDate, returningDate) => {
+    console.log(from, to, departureDate);
+    console.log("index from", airport_options.indexOf(from));
+    const validFrom =
+      airport_options.findIndex((object) => {
+        return object.id === from.id;
+      }) > -1;
+    const validTo =
+      airport_options.findIndex((object) => {
+        return object.id === to.id;
+      }) > -1;
+    const validDeparture = departureDate > new Date();
+    const validReturning = returningDate > new Date();
+
+    if (validFrom && validTo && validDeparture) {
+      alert("everything ok!");
+      return true;
+    } else {
+      if (!validFrom) alert("from required!");
+      if (!validTo) alert("to required!");
+      if (!validDeparture)
+        alert("please select a departure date that later than today!");
+      if (!validReturning)
+        alert("please select a returning date that later than today!");
+    }
+  };
+
   return (
     <div className="flex items-center justify-center w-full mx-auto">
       {/* ini dibagi 2, kiri untuk pilihan penerbangan, kanan untuk input field */}
@@ -94,7 +153,7 @@ const CariTiketForm = (props) => {
                 fullWidth
                 disablePortal
                 id="from-flight-select"
-                options={airport_options}
+                options={airport_options.filter((item) => item.id != to?.id)}
                 getOptionLabel={(option) => option.name || ""}
                 isOptionEqualToValue={(option, value) =>
                   value === undefined || value === "" || option.id === value.id
@@ -116,7 +175,7 @@ const CariTiketForm = (props) => {
                 fullWidth
                 disablePortal
                 id="to-flight-select"
-                options={airport_options}
+                options={airport_options.filter((item) => item.id != from?.id)}
                 getOptionLabel={(option) => option.name || ""}
                 isOptionEqualToValue={(option, value) =>
                   value === undefined || value === "" || option.id === value.id
@@ -183,7 +242,14 @@ const CariTiketForm = (props) => {
               )}
 
               {/* button cari penerbangan */}
-              <button className="px-2 py-4 bg-gray-600 hover:cursor-pointer hover:bg-gray-900 text-white rounded-md w-[30%] z-0">
+              <button
+                className="px-2 py-4 bg-gray-600 hover:cursor-pointer hover:bg-gray-900 text-white rounded-md w-[30%] z-0 ease-in-out duration-300"
+                onClick={() => {
+                  flightType === "Oneway"
+                    ? validateOneWay(from, to, departureDate)
+                    : validateRoundtrip(from, to, departureDate, returningDate);
+                }}
+              >
                 Cari Penerbangan
               </button>
             </div>
