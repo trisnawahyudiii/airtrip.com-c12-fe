@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundColor: (theme) => ({
+        ...theme("colors"),
+        gunmetal: "#223544",
+      }),
       minHeight: {
         "screen-75": "75vh",
       },
