@@ -5,23 +5,16 @@ export default function FooterSmall(props) {
     <>
       <footer
         className={
-          (props.absolute
-            ? "absolute w-full bottom-0 bg-blueGray-800"
-            : "relative")
+          props.absolute ? "absolute w-full bottom-0 bg-slate-800" : "relative"
         }
       >
         <div className="container px-4 mx-auto">
-          <hr className="mb-6 border-b-1 border-blueGray-600" />
+          <hr className="mb-6 border-b-1 border-slate-600" />
           <div className="flex flex-wrap items-center justify-center md:justify-between">
             <div className="w-full px-2 md:w-4/12">
-              <div className="py-1 text-sm font-semibold text-center text-blueGray-500 md:text-left">
-              Copyright © {new Date().getFullYear()} Airtrip {" "}. All rights reserved
-                {/* <a
-                  href="https://www.creative-tim.com?ref=nnjs-footer-small"
-                  className="py-1 text-sm font-semibold text-white hover:text-blueGray-300"
-                >
-                  Creative Tim
-                </a> */}
+              <div className="py-1 text-sm font-semibold text-center text-slate-500 md:text-left">
+                Copyright © {new Date().getFullYear()} Airtrip . All rights
+                reserved
               </div>
             </div>
             <div className="w-full px-4 md:w-8/12">
@@ -29,7 +22,7 @@ export default function FooterSmall(props) {
                 <li>
                   <a
                     href="https://www.creative-tim.com?ref=nnjs-footer-small"
-                    className="block px-3 py-1 text-sm font-semibold text-blueGray-500 hover:text-blueGray-300"
+                    className="block px-3 py-1 text-sm font-semibold text-slate-500 hover:text-slate-300"
                   >
                     Privacy Policy
                   </a>
@@ -37,7 +30,7 @@ export default function FooterSmall(props) {
                 <li>
                   <a
                     href="https://www.creative-tim.com/presentation?ref=nnjs-footer-small"
-                    className="block px-3 py-1 text-sm font-semibold text-blueGray-500 hover:text-blueGray-300"
+                    className="block px-3 py-1 text-sm font-semibold text-slate-500 hover:text-slate-300"
                   >
                     Term & Condition
                   </a>
@@ -45,7 +38,7 @@ export default function FooterSmall(props) {
                 <li>
                   <a
                     href="http://blog.creative-tim.com?ref=nnjs-footer-small"
-                    className="block px-3 py-1 text-sm font-semibold text-blueGray-500 hover:text-blueGray-300"
+                    className="block px-3 py-1 text-sm font-semibold text-slate-500 hover:text-slate-300"
                   >
                     FAQ
                   </a>
