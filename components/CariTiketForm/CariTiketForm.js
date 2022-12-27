@@ -163,7 +163,7 @@ const CariTiketForm = (props) => {
                     {option.name}
                   </Box>
                 )}
-                renderInput={(params) => <TextField {...params} label="Dari" />}
+                renderInput={(params) => <TextField {...params} label="From" />}
                 value={from}
                 onChange={(event, newValue) => setFrom(newValue)}
               />
@@ -185,7 +185,7 @@ const CariTiketForm = (props) => {
                     {option.name}
                   </Box>
                 )}
-                renderInput={(params) => <TextField {...params} label="Ke" />}
+                renderInput={(params) => <TextField {...params} label="To" />}
                 value={to}
                 onChange={(event, newValue) => setTo(newValue)}
               />
@@ -221,7 +221,7 @@ const CariTiketForm = (props) => {
                 }
               >
                 <DesktopDatePicker
-                  label="Pergi"
+                  label="Departure"
                   fullWidth
                   value={departureDate}
                   onChange={(date) => setDepartureDate(date)}
@@ -233,7 +233,7 @@ const CariTiketForm = (props) => {
               {flightType === "Roundtrip" && (
                 <div className=" w-[30%]">
                   <DesktopDatePicker
-                    label="Pulang"
+                    label="Return"
                     value={returningDate}
                     onChange={(date) => setReturningDate(date)}
                     renderInput={(params) => <TextField {...params} />}
