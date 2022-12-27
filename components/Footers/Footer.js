@@ -52,7 +52,7 @@ export default function foooter() {
               <input
                 type="email"
                 name="email"
-                className="input-field w-full"
+                className="input-field w-full text-gray-900"
                 placeholder="Enter Your Email"
                 required
               ></input>

@@ -73,11 +73,11 @@ export default function diskonn() {
                   <p className="reviews">(25 reviews)</p>
 
                   <div className="card-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@ export default function diskonn() {
                   <span>/ per person</span>
                 </p>
 
-                <button className="btn btn-secondary">Book Now</button>
+                <button className="text-white border-[2px] border-white w-full rounded-full px-2 py-3 uppercas hover:bg-white hover:bg-opacity-[10%] ease-in-out duration-300">Book Now</button>
               </div>
             </div>
           </li>
@@ -143,11 +143,11 @@ export default function diskonn() {
                   <p className="reviews">(20 reviews)</p>
 
                   <div className="card-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                   </div>
                 </div>
 
@@ -156,7 +156,7 @@ export default function diskonn() {
                   <span>/ per person</span>
                 </p>
 
-                <button className="btn btn-secondary">Book Now</button>
+                <button className="text-white border-[2px] border-white w-full rounded-full px-2 py-3 uppercas hover:bg-white hover:bg-opacity-[10%] ease-in-out duration-300">Book Now</button>
               </div>
             </div>
           </li>
@@ -213,11 +213,11 @@ export default function diskonn() {
                   <p className="reviews">(40 reviews)</p>
 
                   <div className="card-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
                   </div>
                 </div>
 
@@ -226,7 +226,7 @@ export default function diskonn() {
                   <span>/ per person</span>
                 </p>
 
-                <button className="btn btn-secondary">Book Now</button>
+                <button className="text-white border-[2px] border-white w-full rounded-full px-2 py-3 uppercas hover:bg-white hover:bg-opacity-[10%] ease-in-out duration-300">Book Now</button>
               </div>
             </div>
           </li>
