@@ -56,7 +56,7 @@ const Login = () => {
       <Auth>
         <div className="container h-full px-4 mx-auto">
           <div className="flex items-center content-center justify-center h-full">
-            <div className="w-full px-4 lg:w-4/12">
+            <div className="px-4 w-full md:w-6/12 xl:w-4/12">
               <div className="relative flex flex-col w-full min-w-0 mb-6 break-words border-0 rounded-lg shadow-lg bg-slate-200">
                 <div className="px-6 py-6 mb-0 rounded-t">
                   <div className="mb-3 text-center">
@@ -141,31 +141,24 @@ const Login = () => {
                       >
                         Sign In
                       </button>
-                      {/* <form onSubmit={this.onLoginSubmit}>
-                      <div className="input-group"><input onChange={e => this.setState({email: e.target.value})} type="email" className="mt-3 form-control" placeholder="Email"/></div>
-                      <div className="input-group"><input onChange={e => this.setState({password: e.target.value})} type="password" className="mt-3 form-control" placeholder="Password"/></div>
-                      {this.loadingButton()}
-                     </form> */}
                     </div>
                   </form>
+                  <div className="relative flex flex-wrap ">
+                    <div className="w-1/2">
+                      <Link href="/forgotpassword" className="text-black">
+                        <small>Forgot password?</small>
+                      </Link>
+                    </div>
+                    <div className="w-1/2 text-right">
+                      <Link href="/users/register" className="text-black">
+                        <small>Create new account</small>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* <div className="relative flex flex-wrap mt-6">
-             <button
-              className="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-600 hover:shadow-md focus:outline-none"
-              type="button"
-            >
-              Forgot password?
-            </button>
-            <button
-              className="px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-600 hover:shadow-md focus:outline-none"
-              type="button"
-            >
-              Create new account
-            </button>
-            </div> */}
-              <div className="relative flex flex-wrap mt-6">
                 <div className="w-1/2">
                   <Link href="/forgotpassword" legacyBehavior>
                     <a href="#pablo" className="text-black">
@@ -180,7 +173,7 @@ const Login = () => {
                     </a>
                   </Link>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

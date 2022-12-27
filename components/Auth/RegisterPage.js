@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Router from "next/router";
 import Image from "next/Image.js";
+import Link from "next/link";
 
 import Auth from "../../layouts/Auth";
 import Google from "../../public/img/google.svg";
@@ -190,7 +191,6 @@ const RegisterPage = () => {
 
                     <div className="mt-6 text-center">
                       <button
-                        //   href="/looogin"
                         className="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-700 hover:shadow-lg focus:outline-none"
                         type="submit"
                       >
@@ -198,6 +198,16 @@ const RegisterPage = () => {
                       </button>
                     </div>
                   </form>
+                  <div className="relative flex flex-wrap ">
+                    <div className="text-left">
+                      <Link href="/users/login" className="text-black">
+                        <small>
+                          Already have an account?{" "}
+                          <span className="font-bold">Login </span>
+                        </small>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
