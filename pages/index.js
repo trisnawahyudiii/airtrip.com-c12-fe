@@ -1,6 +1,8 @@
 // dependencies
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { verify } from "jsonwebtoken";
 
 // components
 import Navbar from "../components/Navbar/Navbar";
@@ -10,20 +12,13 @@ import OurServices from "../components/OurServices/OurServices";
 import Package from "../components/Package/Package";
 import Footer from "../components/Footers/Footer";
 
-// other
+// layout
+import MainLayout from "../layouts/MainLayout";
 
 const Home = () => {
   return (
     <>
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <title>Airtrip</title>
-      </Head>
-      <main>
-        <Navbar transparent />
+      <MainLayout>
         <div className="relative">
           <Hero />
           <div className="absolute top-[75%] w-full">
@@ -32,8 +27,7 @@ const Home = () => {
         </div>
         <OurServices />
         <Package />
-        <Footer />
-      </main>
+      </MainLayout>
     </>
   );
 };

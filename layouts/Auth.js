@@ -20,8 +20,11 @@ export default function Auth({ children }) {
               backgroundImage: "url('/img/4.jpg')",
             }}
           ></div>
-          {children}
+
+          <main>{children}</main>
+          
           <FooterSmall absolute />
+          
         </section>
       </main>
     </>

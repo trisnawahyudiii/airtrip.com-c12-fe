@@ -1,14 +1,81 @@
+/* eslint-disable @next/next/no-img-element */
 // dependencies
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 // components
-import { Divider } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Tooltip,
+  IconButton,
+  Divider,
+  MenuItem,
+  ListItemIcon,
+} from "@mui/material";
 
+import Menu from "@mui/material/Menu";
+
+import Logout from "@mui/icons-material/Logout";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 // other
 
+// get accesToken from localstorage
+
 const Navbar = () => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  useEffect(() => {
+    // check if there is token in the localStorage
+    const token = localStorage.getItem("accessToken");
+
+    if (!token) {
+      return;
+    }
+
+    // fetch the user data
+    const fetchUser = async (token) => {
+      const config = {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await fetch("/api/auth/whoami", config)
+        .then((res) => {
+          return res.json();
+        })
+        .catch((err) => {
+          setError(err);
+        });
+
+      setUser(response.data.data);
+    };
+
+    fetchUser(token);
+  }, []);
+
+  const handleLogout = (event) => {
+    localStorage.removeItem("accessToken");
+    setUser(null);
+  };
 
   return (
     <>
@@ -104,24 +171,120 @@ const Navbar = () => {
                 </p>
               </li>
 
-              <li className="flex items-center mt-3 lg:mt-0">
-                <Link href="/users/login">
-                  <button
-                    className="px-4 py-2 mb-3 ml-3 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-600 hover:shadow-lg focus:outline-none lg:mr-1 lg:mb-0"
-                    type="button"
+              {/* login and register button */}
+              {!user && (
+                <li className="flex items-center mt-3 lg:mt-0">
+                  <Link href="/users/login">
+                    <button
+                      className="px-4 py-2 mb-3 ml-3 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-600 hover:shadow-lg focus:outline-none lg:mr-1 lg:mb-0"
+                      type="button"
+                    >
+                      <i className=""></i> Login
+                    </button>
+                  </Link>
+                  <Link href="/users/register">
+                    <button
+                      className="px-4 py-2 mb-3 ml-3 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-600 hover:shadow-lg focus:outline-none lg:mr-1 lg:mb-0"
+                      type="button"
+                    >
+                      <i className=""></i> Register
+                    </button>
+                  </Link>
+                </li>
+              )}
+
+              {/* if user has logged in show user control panel */}
+              {user && (
+                <li className="flex items-center mt-3 lg:mt-0">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
                   >
-                    <i className=""></i> Login
-                  </button>
-                </Link>
-                <Link href="/users/register">
-                  <button
-                    className="px-4 py-2 mb-3 ml-3 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-600 hover:shadow-lg focus:outline-none lg:mr-1 lg:mb-0"
-                    type="button"
+                    <IconButton
+                      onClick={handleClick}
+                      size="small"
+                      sx={{ ml: 2 }}
+                      aria-controls={open ? "account-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                    >
+                      <Avatar sx={{ width: 32, height: 32 }}>
+                        {user.name[0]}
+                      </Avatar>
+                    </IconButton>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    id="account-menu"
+                    open={open}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        overflow: "visible",
+                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                        mt: 1.5,
+                        "& .MuiAvatar-root": {
+                          width: 32,
+                          height: 32,
+                          ml: -0.5,
+                          mr: 1,
+                        },
+                        "&:before": {
+                          content: '""',
+                          display: "block",
+                          position: "absolute",
+                          top: 0,
+                          right: 14,
+                          width: 10,
+                          height: 10,
+                          bgcolor: "background.paper",
+                          transform: "translateY(-50%) rotate(45deg)",
+                          zIndex: 0,
+                        },
+                      },
+                    }}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                   >
-                    <i className=""></i> Register
-                  </button>
-                </Link>
-              </li>
+                    {user.role.name === "ADMIN" && (
+                      <MenuItem>
+                        <ListItemIcon>
+                          <AdminPanelSettingsIcon fontSize="small" />
+                        </ListItemIcon>
+                        Admin Panel
+                      </MenuItem>
+                    )}
+
+                    <Link href="/users/profile">
+                      <MenuItem>
+                        <ListItemIcon>
+                          <ManageAccountsIcon fontSize="small" />
+                        </ListItemIcon>
+                        My account
+                      </MenuItem>
+                    </Link>
+
+                    <MenuItem>
+                      <ListItemIcon>
+                        <BookmarksIcon fontSize="small" />
+                      </ListItemIcon>
+                      Wishlist
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem onClick={handleLogout}>
+                      <ListItemIcon>
+                        <Logout fontSize="small" />
+                      </ListItemIcon>
+                      Logout
+                    </MenuItem>
+                  </Menu>
+                </li>
+              )}
             </ul>
           </div>
         </div>

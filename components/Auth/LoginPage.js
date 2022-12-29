@@ -10,14 +10,7 @@ import Auth from "../../layouts/Auth";
 import Google from "../../public/img/google.svg";
 import Facebook from "../../public/img/facebook.png";
 
-// import '../../styles/tailwind.css'
-// import '../../styles/style.css'
-// layout for page
-
-// import Auth from "../../components/layouts/Auth.js";
-
 const Login = () => {
-  // const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -32,16 +25,13 @@ const Login = () => {
       email: inputs.email,
       password: inputs.password,
     };
+
     console.log(authenticationRequest);
 
     axios
-      .post(
-        "https://airtrip-be-production.up.railway.app/login",
-        authenticationRequest
-      )
+      .post("/api/auth/login", authenticationRequest)
       .then((res) => {
-        console.log(res.data);
-        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("accessToken", res.data.data.accessToken);
         Router.push("/");
       })
       .catch((error) => {
@@ -86,6 +76,8 @@ const Login = () => {
                   <div className="mb-3 font-bold text-center text-slate-400">
                     <small>Or sign in with credentials</small>
                   </div>
+
+                  {/* form input */}
                   <form onSubmit={handleSubmit}>
                     <div className="relative w-full mb-3">
                       <label
@@ -96,6 +88,7 @@ const Login = () => {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         value={inputs.email}
                         // inputProps={{ pattern: '[a-zA-Z]{4,16}$' }}
                         onChange={handleChange("email")}
@@ -114,6 +107,7 @@ const Login = () => {
                       </label>
                       <input
                         type="password"
+                        name="password"
                         value={inputs.password}
                         onChange={handleChange("password")}
                         className="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-slate-300 text-slate-600 focus:outline-none focus:ring"
@@ -143,6 +137,8 @@ const Login = () => {
                       </button>
                     </div>
                   </form>
+
+                  {/* optional choice */}
                   <div className="relative flex flex-wrap ">
                     <div className="w-1/2">
                       <Link href="/forgotpassword" className="text-black">
@@ -157,23 +153,6 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-
-              {/* <div className="relative flex flex-wrap mt-6">
-                <div className="w-1/2">
-                  <Link href="/forgotpassword" legacyBehavior>
-                    <a href="#pablo" className="text-black">
-                      <small>Forgot password?</small>
-                    </a>
-                  </Link>
-                </div>
-                <div className="w-1/2 text-right">
-                  <Link href="/register" legacyBehavior>
-                    <a href="#pablo" className="text-black">
-                      <small>Create new account</small>
-                    </a>
-                  </Link>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
