@@ -54,7 +54,7 @@ const Navbar = ({ userData }) => {
             {/* company logo */}
             <Link
               href="/"
-              className="flex items-center justify-center text-xl mr-4 text-sm font-bold leading-relaxed uppercase text-blue whitespace-nowrap"
+              className="flex items-center justify-center text-xl mr-4 font-bold leading-relaxed uppercase text-blue whitespace-nowrap"
             >
               Airtrip
             </Link>
