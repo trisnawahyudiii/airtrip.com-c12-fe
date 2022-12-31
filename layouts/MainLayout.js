@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 
 import Footer from "../components/Footers/Footer";
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, user }) => {
   return (
     <div>
       <Head>
@@ -13,7 +13,7 @@ const MainLayout = ({ children }) => {
         />
         <title>Airtrip</title>
       </Head>
-      <Navbar transparent />
+      <Navbar userData={user} transparent />
 
       <main>{children}</main>
 

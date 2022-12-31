@@ -15,10 +15,10 @@ import Footer from "../components/Footers/Footer";
 // layout
 import MainLayout from "../layouts/MainLayout";
 
-const Home = () => {
+const Home = ({ userData }) => {
   return (
     <>
-      <MainLayout>
+      <MainLayout user={userData}>
         <div className="relative">
           <Hero />
           <div className="absolute top-[75%] w-full">
@@ -31,5 +31,30 @@ const Home = () => {
     </>
   );
 };
+
+export async function getServerSideProps({ req, res }) {
+  const { accessToken } = req.cookies;
+
+  const config = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  const response = await fetch(process.env.API_URL + "/auth/whoami", config);
+  const { data } = await response.json();
+
+  if (data) {
+    return {
+      props: { userData: data.data },
+    };
+  } else {
+    return {
+      props: { userData: null },
+    };
+  }
+}
 
 export default Home;

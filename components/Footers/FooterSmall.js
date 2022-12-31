@@ -5,11 +5,12 @@ export default function FooterSmall(props) {
     <>
       <footer
         className={
-          props.absolute ? "absolute w-full bottom-0 bg-slate-800" : "relative"
+          props.absolute
+            ? "absolute inset-x-0 bottom-0 w-full bg-slate-800"
+            : " bg-slate-800 relative "
         }
       >
-        <div className="container px-4 mx-auto">
-          <hr className="mb-6 border-b-1 border-slate-600" />
+        <div className="container px-4 py-4 mx-auto">
           <div className="flex flex-wrap items-center justify-center md:justify-between">
             <div className="w-full px-2 md:w-4/12">
               <div className="py-1 text-sm font-semibold text-center text-slate-500 md:text-left">

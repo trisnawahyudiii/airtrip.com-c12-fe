@@ -67,6 +67,9 @@ module.exports = {
       backgroundSize: {
         full: "100%",
       },
+      backgroundImage: {
+        airplane: "url('/img/4.jpg')",
+      },
     },
   },
   plugins: [

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import cookie from "js-cookie";
 
 import Link from "next/link";
 import Router from "next/router";
@@ -31,7 +31,7 @@ const Login = () => {
     axios
       .post("/api/auth/login", authenticationRequest)
       .then((res) => {
-        localStorage.setItem("accessToken", res.data.data.accessToken);
+        cookie.set("accessToken", res.data.data.accessToken, { expires: 7 });
         Router.push("/");
       })
       .catch((error) => {

@@ -10,16 +10,7 @@ import Google from "../../public/img/google.svg";
 import Facebook from "../../public/img/facebook.png";
 
 const RegisterPage = () => {
-  const [open, setOpen] = React.useState(false);
-
-  // const handleClose = (event, reason) => {
-  //   if (reason === 'clikaway') {
-  //     return;
-  //   }
-
-  //   setOpen(false);
-  // };
-
+  const [agree, setAgree] = useState(false);
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -40,17 +31,15 @@ const RegisterPage = () => {
       name: inputs.name,
       address: inputs.address,
     };
+
     console.log(userObject);
-    // return(
-    //   <Router.push='/login'/>);
 
     axios
       .post("https://airtrip-be-production.up.railway.app/register", userObject)
       .then((res) => {
         console.log(res.data);
-        setOpen(true);
         alert("Akun berhasil di daftarkan");
-        Router.push("/login");
+        // Router.push("/users/login");
       });
     event.preventDefault();
   };
@@ -178,6 +167,8 @@ const RegisterPage = () => {
                         <input
                           id="customCheckLogin"
                           type="checkbox"
+                          value={agree}
+                          onChange={() => setAgree(!agree)}
                           className="w-5 h-5 ml-1 transition-all duration-150 ease-linear border-0 rounded form-checkbox text-slate-700"
                         />
                         <span className="ml-2 text-sm font-semibold text-slate-600">
@@ -191,7 +182,12 @@ const RegisterPage = () => {
 
                     <div className="mt-6 text-center">
                       <button
-                        className="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-700 active:bg-slate-700 hover:shadow-lg focus:outline-none"
+                        className={
+                          "w-full px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none focus:outline-none" +
+                          (agree
+                            ? " bg-slate-700 active:bg-slate-700 hover:shadow-lg  "
+                            : " bg-slate-400 text-slate-200 cursor-not-allowed")
+                        }
                         type="submit"
                       >
                         Create account

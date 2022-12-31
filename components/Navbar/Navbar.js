@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 // dependencies
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Router from "next/router";
+import cookie from "js-cookie";
 import Link from "next/link";
 
 // components
@@ -24,10 +26,7 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 // get accesToken from localstorage
 
-const Navbar = () => {
-  const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-
+const Navbar = ({ userData }) => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -40,42 +39,12 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
-  useEffect(() => {
-    // check if there is token in the localStorage
-    const token = localStorage.getItem("accessToken");
-
-    if (!token) {
-      return;
-    }
-
-    // fetch the user data
-    const fetchUser = async (token) => {
-      const config = {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-      const response = await fetch("/api/auth/whoami", config)
-        .then((res) => {
-          return res.json();
-        })
-        .catch((err) => {
-          setError(err);
-        });
-
-      setUser(response.data.data);
-    };
-
-    fetchUser(token);
-  }, []);
-
   const handleLogout = (event) => {
-    localStorage.removeItem("accessToken");
-    setUser(null);
+    cookie.remove("accessToken");
+    Router.push("/");
   };
+
+  // console.log("navbar user", userData);
 
   return (
     <>
@@ -172,7 +141,7 @@ const Navbar = () => {
               </li>
 
               {/* login and register button */}
-              {!user && (
+              {!userData && (
                 <li className="flex items-center mt-3 lg:mt-0">
                   <Link href="/users/login">
                     <button
@@ -194,7 +163,7 @@ const Navbar = () => {
               )}
 
               {/* if user has logged in show user control panel */}
-              {user && (
+              {userData && (
                 <li className="flex items-center mt-3 lg:mt-0">
                   <Box
                     sx={{
@@ -212,7 +181,7 @@ const Navbar = () => {
                       aria-expanded={open ? "true" : undefined}
                     >
                       <Avatar sx={{ width: 32, height: 32 }}>
-                        {user.name[0]}
+                        {userData.name[0]}
                       </Avatar>
                     </IconButton>
                   </Box>
@@ -251,7 +220,7 @@ const Navbar = () => {
                     transformOrigin={{ horizontal: "right", vertical: "top" }}
                     anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                   >
-                    {user.role.name === "ADMIN" && (
+                    {userData.role.name === "ADMIN" && (
                       <MenuItem>
                         <ListItemIcon>
                           <AdminPanelSettingsIcon fontSize="small" />
