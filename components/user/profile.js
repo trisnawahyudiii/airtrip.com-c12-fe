@@ -1,21 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
+
+// dependencies
 import React, { useState, useEffect } from "react";
-// import { useLocation } from 'react-router-dom';
+import Image from "next/Image";
 import axios from "axios";
 import cookie from "js-cookie";
+import Swal from "sweetalert2";
 
+// components
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
-import Swal from "sweetalert2";
+import { IconButton } from "@mui/material";
+import { PhotoCamera } from "@mui/icons-material";
 
 // layout for page
 import UserLayout from "../../layouts/UserLayout";
 
 const ProfilePage = ({ user }) => {
-  const [hasChange, setHasChange] = useState(false);
   const [valid, setValid] = useState(true);
+  const [hasChange, setHasChange] = useState(false);
   const [inputs, setInputs] = useState({ ...user });
+  const [imageSrc, setImageSrc] = useState(user.image);
+  const [file, setFile] = useState(null);
   const [passwordInput, setPasswordInput] = useState({
     password: "",
     confirmPassword: "",
@@ -31,6 +38,19 @@ const ProfilePage = ({ user }) => {
     if (!hasChange) setHasChange(true);
 
     setPasswordInput({ ...passwordInput, [prop]: event.target.value });
+  };
+
+  const handleImage = (event) => {
+    if (!hasChange) setHasChange(true);
+
+    const reader = new FileReader();
+
+    reader.onload = (onLoadEvent) => {
+      setImageSrc(onLoadEvent.target.result);
+      setFile(undefined);
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
   };
 
   const validate = () => {
@@ -75,7 +95,6 @@ const ProfilePage = ({ user }) => {
         if (result.isConfirmed) {
           const reqBody = {
             email: inputs.email,
-            image: inputs.image,
             phone: inputs.phone,
             name: inputs.name,
             address: inputs.address,
@@ -83,6 +102,12 @@ const ProfilePage = ({ user }) => {
 
           if (passwordInput.password !== "") {
             reqBody.password = passwordInput.password;
+          }
+
+          if (imageSrc.indexOf("default-profile") === -1) {
+            reqBody.image = imageSrc;
+          } else {
+            reqBody.image = "";
           }
 
           const token = cookie.get("accessToken");
@@ -129,9 +154,9 @@ const ProfilePage = ({ user }) => {
     <>
       {user ? (
         <UserLayout user={user}>
-          <div className="relative w-[100vw] h-[100vh] mt-[66px]">
+          <div className="mt-[65px] py-10 flex items-center justify-center">
             <div className="w-full h-full flex items-center justify-center">
-              <div className="relative flex flex-col justify-center w-full min-w-0 mb-6 break-words border-0 rounded-lg shadow-lg lg:w-6/12 bg-slate-100">
+              <div className="flex flex-col justify-center w-full min-w-0 break-words border-0 rounded-lg shadow-lg lg:w-6/12 bg-slate-100">
                 <div className="px-6 py-6 mb-0 bg-white rounded-t">
                   <div className="flex justify-center text-center">
                     <h6 className="text-xl font-bold text-slate-700">
@@ -144,10 +169,38 @@ const ProfilePage = ({ user }) => {
                     <h6 className="mt-3 mb-6 text-sm font-bold uppercase text-slate-400">
                       INFORMASI PENGGUNA
                     </h6>
+                    {/* user image */}
+                    <div className="flex flex-col justify-center items-center my-7">
+                      <div className="relative flex w-fit">
+                        <img
+                          src={imageSrc}
+                          alt="user profile"
+                          width={150}
+                          height={150}
+                          className="rounded-full"
+                        />
+                        <IconButton
+                          color="primary"
+                          aria-label="upload picture"
+                          component="label"
+                          className="absolute bottom-0 right-0 bg-white shadow-lg"
+                        >
+                          <input
+                            hidden
+                            accept="image/*"
+                            type="file"
+                            name="image"
+                            onChange={handleImage}
+                          />
+                          <PhotoCamera fontSize="large" />
+                        </IconButton>
+                      </div>
+                    </div>
+
                     <div className="flex flex-wrap">
                       {/* username */}
                       <div className="w-full px-4 lg:w-6/12">
-                        <div className="relative w-full mb-3">
+                        <div className=" w-full mb-3">
                           <label
                             className="block mb-2 text-xs font-bold uppercase text-slate-600"
                             htmlFor="grid-password"
@@ -167,7 +220,7 @@ const ProfilePage = ({ user }) => {
 
                       {/* email */}
                       <div className="w-full px-4 lg:w-6/12">
-                        <div className="relative w-full mb-3">
+                        <div className=" w-full mb-3">
                           <label
                             className="block mb-2 text-xs font-bold uppercase text-slate-600"
                             htmlFor="grid-password"
@@ -187,7 +240,7 @@ const ProfilePage = ({ user }) => {
 
                       {/* saldo */}
                       <div className="w-full px-4 lg:w-6/12">
-                        <div className="relative w-full mb-3">
+                        <div className=" w-full mb-3">
                           <label
                             className="block mb-2 text-xs font-bold uppercase text-slate-600 "
                             htmlFor="grid-password"
@@ -205,7 +258,7 @@ const ProfilePage = ({ user }) => {
 
                       {/* Phone number */}
                       <div className="w-full px-4 lg:w-6/12">
-                        <div className="relative w-full mb-3">
+                        <div className=" w-full mb-3">
                           <label
                             className="block mb-2 text-xs font-bold uppercase text-slate-600"
                             htmlFor="grid-password"
@@ -223,7 +276,7 @@ const ProfilePage = ({ user }) => {
 
                       {/* address */}
                       <div className="w-full px-4 lg:w-6/12">
-                        <div className="relative w-full mb-3">
+                        <div className=" w-full mb-3">
                           <label
                             className="block mb-2 text-xs font-bold uppercase text-slate-600"
                             htmlFor="grid-password"
@@ -248,8 +301,8 @@ const ProfilePage = ({ user }) => {
 
                     <div className="flex flex-wrap">
                       {/* password input */}
-                      <div className="w-full px-4 lg:w-12/12">
-                        <div className="relative w-full mb-3">
+                      <div className="w-full px-4 lg:w-6/12">
+                        <div className=" w-full mb-3">
                           <div className="w-full mb-6 md:w-full ">
                             <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase">
                               password
@@ -270,8 +323,8 @@ const ProfilePage = ({ user }) => {
                       </div>
 
                       {/* confirm password */}
-                      <div className="w-full px-4 lg:w-12/12">
-                        <div className="relative w-full mb-3">
+                      <div className="w-full px-4 lg:w-6/12">
+                        <div className=" w-full mb-3">
                           <div className="w-full mb-6 md:w-full ">
                             <label className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase">
                               Confirm password
@@ -305,7 +358,7 @@ const ProfilePage = ({ user }) => {
                     </div>
 
                     {/* submit Button */}
-                    <div className="flex justify-end items-center">
+                    <div className="flex justify-end items-center px-3">
                       <button
                         className={
                           "px-4 py-2 mr-1 text-xs font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none focus:outline-none" +

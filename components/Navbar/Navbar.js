@@ -52,10 +52,11 @@ const Navbar = ({ userData }) => {
         <div className="container flex flex-col lg:flex-row px-4 mx-auto ">
           <div className="relative flex w-full justify-between lg:w-fit lg:justify-start">
             {/* company logo */}
-            <Link href="/" legacyBehavior>
-              <a className="inline-block py-2 mr-4 text-sm font-bold leading-relaxed uppercase text-blue whitespace-nowrap">
-                Airtrip
-              </a>
+            <Link
+              href="/"
+              className="flex items-center justify-center text-xl mr-4 text-sm font-bold leading-relaxed uppercase text-blue whitespace-nowrap"
+            >
+              Airtrip
             </Link>
 
             {/* mobile menu button */}
@@ -180,9 +181,18 @@ const Navbar = ({ userData }) => {
                       aria-haspopup="true"
                       aria-expanded={open ? "true" : undefined}
                     >
-                      <Avatar sx={{ width: 32, height: 32 }}>
+                      {/* <Avatar sx={{ width: 32, height: 32 }}>
                         {userData.name[0]}
-                      </Avatar>
+                      </Avatar> */}
+
+                      <Avatar
+                        alt="user avatar"
+                        src={
+                          userData.image
+                            ? userData.image
+                            : "/img/default-profile.jpg"
+                        }
+                      />
                     </IconButton>
                   </Box>
                   <Menu

@@ -11,6 +11,7 @@ const UserLayout = ({ children, user }) => {
         style={{
           backgroundImage: `url('/img/4.jpg')`,
         }}
+        className="h-max"
       >
         {children}
       </main>

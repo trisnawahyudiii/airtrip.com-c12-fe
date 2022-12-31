@@ -6,7 +6,7 @@ export default async function update(req, res) {
   const { authorization } = req.headers;
 
   console.log("client api update attempt");
-
+  
   axios
     .put(url + "/users/update/" + id, req.body, {
       headers: {
