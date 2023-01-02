@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Router from "next/router";
-import Image from "next/Image.js";
 import Link from "next/link";
 
 import Auth from "../../layouts/Auth";
@@ -34,13 +33,11 @@ const RegisterPage = () => {
 
     console.log(userObject);
 
-    axios
-      .post("https://airtrip-be-production.up.railway.app/register", userObject)
-      .then((res) => {
-        console.log(res.data);
-        alert("Akun berhasil di daftarkan");
-        // Router.push("/users/login");
-      });
+    axios.post("https://airtrip-be-production.up.railway.app/register", userObject).then((res) => {
+      console.log(res.data);
+      alert("Akun berhasil di daftarkan");
+      // Router.push("/users/login");
+    });
     event.preventDefault();
   };
 
@@ -53,23 +50,21 @@ const RegisterPage = () => {
               <div className="relative flex flex-col w-full min-w-0 mb-6 break-words border-0 rounded-lg shadow-lg bg-slate-200">
                 <div className="px-6 py-6 mb-0 rounded-t">
                   <div className="mb-3 text-center">
-                    <h6 className="text-sm font-bold text-slate-500">
-                      Sign up with
-                    </h6>
+                    <h6 className="text-sm font-bold text-slate-500">Sign up with</h6>
                   </div>
                   <div className="text-center btn-wrapper">
                     <button
-                      className="inline-flex items-center px-4 py-2 mb-1 mr-2 text-xs font-bold uppercase transition-all duration-150 ease-linear bg-white rounded shadow outline-none active:bg-slate-50 text-slate-700 focus:outline-none hover:shadow-md"
+                      className="inline-flex items-center px-4 py-2 mb-1 mr-2 text-xs  font-bold uppercase transition-all duration-150 ease-linear bg-white rounded shadow outline-none active:bg-slate-50 text-slate-700 focus:outline-none hover:shadow-md"
                       type="button"
                     >
-                      <Image src={Facebook} alt="..." className="w-5 mr-1" />
+                      <img src="/img/facebook.png" alt="Facebook icon" className="w-5 mr-1" />
                       facebook
                     </button>
                     <button
-                      className="inline-flex items-center px-4 py-2 mb-1 mr-1 text-xs font-bold uppercase transition-all duration-150 ease-linear bg-white rounded shadow outline-none active:bg-slate-50 text-slate-700 focus:outline-none hover:shadow-md"
+                      className="inline-flex items-center px-4 py-2 mb-1 mr-1 text-xs  font-bold uppercase transition-all duration-150 ease-linear bg-white rounded shadow outline-none active:bg-slate-50 text-slate-700 focus:outline-none hover:shadow-md"
                       type="button"
                     >
-                      <Image src={Google} alt="..." className="w-5 mr-1" />
+                      <img src="/img/google.svg" alt="Google icon" className="w-5 mr-1" />
                       Google
                     </button>
                   </div>
@@ -198,8 +193,7 @@ const RegisterPage = () => {
                     <div className="text-left">
                       <Link href="/users/login" className="text-black">
                         <small>
-                          Already have an account?{" "}
-                          <span className="font-bold">Login </span>
+                          Already have an account? <span className="font-bold">Login </span>
                         </small>
                       </Link>
                     </div>

@@ -2,7 +2,6 @@
 
 // dependencies
 import React, { useState, useEffect } from "react";
-import Image from "next/Image";
 import axios from "axios";
 import cookie from "js-cookie";
 import Swal from "sweetalert2";
@@ -159,9 +158,7 @@ const ProfilePage = ({ user }) => {
               <div className="flex flex-col justify-center w-full min-w-0 break-words border-0 rounded-lg shadow-lg lg:w-6/12 bg-slate-100">
                 <div className="px-6 py-6 mb-0 bg-white rounded-t">
                   <div className="flex justify-center text-center">
-                    <h6 className="text-xl font-bold text-slate-700">
-                      Akun Saya
-                    </h6>
+                    <h6 className="text-xl font-bold text-slate-700">Akun Saya</h6>
                   </div>
                 </div>
                 <div className="flex-auto px-4 py-10 pt-0 lg:px-10">
@@ -313,9 +310,7 @@ const ProfilePage = ({ user }) => {
                               onChange={handlePassword("password")}
                               className={
                                 "w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-slate-300 text-slate-600 focus:outline-none focus:ring" +
-                                (hasChange && !valid
-                                  ? " border-red-600 focus:ring-rose-600"
-                                  : "")
+                                (hasChange && !valid ? " border-red-600 focus:ring-rose-600" : "")
                               }
                             />
                           </div>
@@ -335,19 +330,14 @@ const ProfilePage = ({ user }) => {
                               onChange={handlePassword("confirmPassword")}
                               className={
                                 "w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-slate-300 text-slate-600 focus:outline-none focus:ring" +
-                                (hasChange && !valid
-                                  ? " border-red-600 focus:ring-rose-600"
-                                  : "")
+                                (hasChange && !valid ? " border-red-600 focus:ring-rose-600" : "")
                               }
                             />
 
                             {/*  */}
                             {hasChange && (
                               <span
-                                className={
-                                  "text-[12px] text-red-600 " +
-                                  (valid ? "hidden" : "")
-                                }
+                                className={"text-[12px] text-red-600 " + (valid ? "hidden" : "")}
                               >
                                 Password do not match!
                               </span>
@@ -380,10 +370,7 @@ const ProfilePage = ({ user }) => {
           </div>
         </UserLayout>
       ) : (
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={true}
-        >
+        <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={true}>
           <CircularProgress color="inherit" />
         </Backdrop>
       )}
