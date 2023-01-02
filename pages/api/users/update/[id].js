@@ -2,13 +2,13 @@ import axios from "axios";
 
 export default async function update(req, res) {
   const { id } = req.query;
-
+  const url = process.env.BACKEND_API_URL;
   const { authorization } = req.headers;
 
   console.log("client api update attempt");
-
+  
   axios
-    .put("https://airtrip-be-production.up.railway.app/users/update/" + id, req.body, {
+    .put(url + "/users/update/" + id, req.body, {
       headers: {
         "Content-type": "application/json",
         Authorization: authorization,

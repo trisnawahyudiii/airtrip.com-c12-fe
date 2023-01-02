@@ -41,7 +41,7 @@ export async function getServerSideProps({ req, res }) {
     },
   };
 
-  const response = await fetch("/api/auth/whoami", config);
+  const response = await fetch(process.env.API_URL + "/auth/whoami", config);
   const { data } = await response.json();
 
   if (data) {
