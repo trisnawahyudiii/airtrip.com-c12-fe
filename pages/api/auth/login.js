@@ -13,9 +13,8 @@ export default async function login(req, res) {
 
   const { email, password } = req.body;
 
-  const url = process.env.BACKEND_API_URL;
   axios
-    .post(url + "/login", {
+    .post("https://airtrip-be-production.up.railway.app/login", {
       email,
       password,
     })

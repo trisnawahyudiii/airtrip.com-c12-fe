@@ -1,12 +1,10 @@
 import axios from "axios";
 
 export default async function whoAmI(req, res) {
-  const url = process.env.BACKEND_API_URL;
-
   const { authorization } = req.headers;
 
   axios
-    .get(url + "/whoami", {
+    .get("https://airtrip-be-production.up.railway.app/whoami", {
       headers: {
         "Content-type": "application/json",
         Authorization: authorization,
