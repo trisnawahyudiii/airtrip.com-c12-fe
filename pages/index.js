@@ -5,12 +5,10 @@ import Head from "next/head";
 import { verify } from "jsonwebtoken";
 
 // components
-import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
 import CariTiketForm from "../components/CariTiketForm/CariTiketForm";
 import OurServices from "../components/OurServices/OurServices";
 import Package from "../components/Package/Package";
-import Footer from "../components/Footers/Footer";
 
 // layout
 import MainLayout from "../layouts/MainLayout";
