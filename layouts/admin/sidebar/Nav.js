@@ -24,22 +24,6 @@ const Nav = ({ sidebarOutsideClick }) => {
     setSubMenuToggleStatus(!subMenuToggleStatus);
   };
 
-  //if menu has chile menu then  use seperate array
-  //  const childMenu = [
-  //   {
-  //     subMenuTitle: "child One",
-  //     linkHref: "/"
-  //   },
-  //   {
-  //     subMenuTitle: "child Two",
-  //     linkHref: "/"
-  //   },
-  //   {
-  //     subMenuTitle: "child Three",
-  //     linkHref: "/"
-  //   }
-  // ];
-
   useEffect(() => {
     if (sidebarOutsideClick) {
       setSidebarStatus(false);
@@ -69,7 +53,7 @@ const Nav = ({ sidebarOutsideClick }) => {
         </div>
 
         <NavItem
-          hrefLink="/airplane"
+          hrefLink="/admin/airplane"
           sidebarStatus={sidebarStatus}
           menuTitle="Airplane"
           subMenu={false}
@@ -79,7 +63,7 @@ const Nav = ({ sidebarOutsideClick }) => {
         </NavItem>
 
         <NavItem
-          hrefLink="/airport"
+          hrefLink="/admin/airport"
           sidebarStatus={sidebarStatus}
           menuTitle="Airport"
           subMenu={false}
@@ -89,7 +73,7 @@ const Nav = ({ sidebarOutsideClick }) => {
         </NavItem>
 
         <NavItem
-          hrefLink="/flight"
+          hrefLink="/admin/flight"
           sidebarStatus={sidebarStatus}
           menuTitle="Flight"
           subMenu={false}
