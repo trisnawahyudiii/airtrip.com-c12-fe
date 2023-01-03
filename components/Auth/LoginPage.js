@@ -23,8 +23,6 @@ const Login = () => {
       password: inputs.password,
     };
 
-    console.log(authenticationRequest);
-
     axios
       .post("/api/auth/login", authenticationRequest)
       .then((res) => {

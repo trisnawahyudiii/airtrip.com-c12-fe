@@ -8,7 +8,6 @@ const CartItem = ({ flight }) => {
 
   const duration = (arrival - departure) / (1000 * 60);
 
-  // console.log(departure, arrival, duration);
 
   const hour = Math.floor(duration / 60).toLocaleString("en-US", {
     minimumIntegerDigits: 2,

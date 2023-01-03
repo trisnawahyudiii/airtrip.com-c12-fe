@@ -1,15 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       backgroundColor: (theme) => ({
         ...theme("colors"),
         gunmetal: "#223544",
+        primaryBlue: "#16A9D8",
       }),
       minHeight: {
         "screen-75": "75vh",

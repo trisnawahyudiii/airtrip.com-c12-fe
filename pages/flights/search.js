@@ -115,7 +115,7 @@ const Search = ({ user }) => {
         )
         .then((response) => {
           setIsLoading(false);
-          console.log("returning search success!", response.data.data);
+          // console.log("returning search success!", response.data.data);
           setReturningFlight(response.data.data);
         })
         .catch((err) => {
@@ -221,12 +221,12 @@ const Search = ({ user }) => {
 
   // checkout handler
   const handleCheckout = () => {
-    console.log("checkout");
+    // console.log("checkout");
     setIsLoading(true);
     const token = cookie.get("accessToken");
 
     const reqBody = {
-      flightId1: selectedDepartureFlight.id,
+      flightId: selectedDepartureFlight.id,
       flightId2: selectedReturningFlight?.id || null,
       flightType: flightType,
     };
@@ -235,12 +235,13 @@ const Search = ({ user }) => {
       .post("https://airtrip-be-production.up.railway.app/tickets/create", reqBody, {
         headers: {
           "Content-type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
         setIsLoading(false);
-        console.log(response);
+        // console.log(response);
+        setTicket(response.data.data);
         return;
       })
       .catch((err) => {
@@ -468,9 +469,11 @@ const Search = ({ user }) => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col h-[100vh] w-full items-center justify-center">
-            <p className="py-3">404 No Flight Data!</p>
-          </div>
+          !ticket && (
+            <div className="flex flex-col h-[100vh] w-full items-center justify-center">
+              <p className="py-3">404 No Flight Data!</p>
+            </div>
+          )
         )}
 
         {!ticket && !isLoading && isError && (

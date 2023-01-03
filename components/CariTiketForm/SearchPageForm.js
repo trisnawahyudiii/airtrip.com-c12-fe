@@ -65,7 +65,7 @@ const SearchPageForm = ({ props }) => {
 
     setFrom(initialFrom);
     setTo(initialTo);
-    console.log("initial airports");
+    // console.log("initial airports");
   }, []);
 
   const handleSubmit = (event) => {

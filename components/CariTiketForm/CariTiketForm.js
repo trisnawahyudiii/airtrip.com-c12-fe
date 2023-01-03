@@ -62,8 +62,8 @@ const CariTiketForm = (props) => {
   });
 
   const validateOneWay = (from, to, departureDate) => {
-    console.log(from, to, departureDate);
-    console.log("index from", airport_options.indexOf(from));
+    // console.log(from, to, departureDate);
+    // console.log("index from", airport_options.indexOf(from));
     const validFrom =
       airport_options.findIndex((object) => {
         return object.id === from.id;

@@ -31,8 +31,6 @@ const RegisterPage = () => {
       address: inputs.address,
     };
 
-    console.log(userObject);
-
     axios.post("https://airtrip-be-production.up.railway.app/register", userObject).then((res) => {
       console.log(res.data);
       alert("Akun berhasil di daftarkan");

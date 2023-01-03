@@ -7,7 +7,7 @@ export default async function list(req, res) {
     url: "https://airtrip-be-production.up.railway.app/airports",
   })
     .then((response) => {
-      console.log;
+      // console.log;
       res.status(200).json({
         status: "OK",
         data: response.data,

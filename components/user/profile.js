@@ -55,14 +55,14 @@ const ProfilePage = ({ user }) => {
   const validate = () => {
     let validated = false;
     if (inputs !== user) {
-      console.log("user has changed!");
+      // console.log("user has changed!");
       validated = true;
       setValid(true);
     }
 
     // check if there's any change(s) on userdata and password
     if (passwordInput.password !== "" || passwordInput.confirmPassword !== "") {
-      console.log("password has changed");
+      // console.log("password has changed");
 
       if (passwordInput.password !== passwordInput.confirmPassword) {
         validated = false;
@@ -111,8 +111,8 @@ const ProfilePage = ({ user }) => {
 
           const token = cookie.get("accessToken");
 
-          console.log("client update page token", token);
-          console.log("client update body", reqBody);
+          // console.log("client update page token", token);
+          // console.log("client update body", reqBody);
 
           axios
             .put("/api/users/update/" + user.id, reqBody, {
@@ -122,7 +122,7 @@ const ProfilePage = ({ user }) => {
               },
             })
             .then((response) => {
-              console.log(response);
+              // console.log(response);
               Swal.fire("Saved!", "", "success");
               cookie.set("accessToken", response.data.data.accessToken);
               return;

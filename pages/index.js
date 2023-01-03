@@ -1,8 +1,4 @@
 // dependencies
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import Head from "next/head";
-import { verify } from "jsonwebtoken";
 
 // components
 import Hero from "../components/Hero/Hero";
