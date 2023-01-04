@@ -37,8 +37,8 @@ const Nav = ({ sidebarOutsideClick }) => {
           {sidebarStatus ? (
             <IconButton
               onClick={sidebarClose}
-              color="secondary"
               className="inline-block h-12 cursor-pointer"
+              color="primary"
             >
               <ArrowBackIosNewIcon />
             </IconButton>
@@ -46,6 +46,7 @@ const Nav = ({ sidebarOutsideClick }) => {
             <IconButton
               className="inline-block h-12 cursor-pointer"
               onClick={sidebarOpen}
+              color="primary"
             >
               <ArrowForwardIosIcon />
             </IconButton>
@@ -82,7 +83,7 @@ const Nav = ({ sidebarOutsideClick }) => {
           <FlightTakeoffIcon className="h-10 w-9" />
         </NavItem>
 
-        <NavItem
+        {/* <NavItem
           hrefLink="/user"
           sidebarStatus={sidebarStatus}
           menuTitle="User"
@@ -90,7 +91,7 @@ const Nav = ({ sidebarOutsideClick }) => {
           subMenuArray={null}
         >
           <AccountCircleIcon className="h-10 w-9" />
-        </NavItem>
+        </NavItem> */}
 
         {/* this menu has child Menu     */}
         {/* <NavItem

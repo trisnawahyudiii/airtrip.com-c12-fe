@@ -73,7 +73,7 @@ const Modal = ({
           <div className="bg-blue-300 p-2 font-bold text-lg text-center text-white -mt-4 -mx-4 mb-5 pb-4">
             <p>Flight</p>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label htmlFor="departure" className="font-semibold pr-2">
               Departure
             </label>
@@ -85,7 +85,7 @@ const Modal = ({
               value={data.departure}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label className="font-semibold pr-2" htmlFor="arrival">
               Arrival
             </label>
@@ -97,7 +97,7 @@ const Modal = ({
               value={data.arrival}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label htmlFor="flight_class" className="font-semibold pr-2">
               Flight Class
             </label>
@@ -117,7 +117,7 @@ const Modal = ({
               <option value="economy">Economy</option>
             </select>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label className="font-semibold pr-2" htmlFor="price">
               Price
             </label>
@@ -129,7 +129,7 @@ const Modal = ({
               value={data.price}
             />
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label className="font-semibold pr-2" htmlFor="from">
               From
             </label>
@@ -153,7 +153,7 @@ const Modal = ({
             </select>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label className="font-semibold pr-2" htmlFor="to">
               To
             </label>
@@ -177,7 +177,7 @@ const Modal = ({
             </select>
           </div>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label className="font-semibold pr-2" htmlFor="airplane_id">
               Airplane
             </label>
@@ -200,7 +200,7 @@ const Modal = ({
               })}
             </select>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <label className="font-semibold pr-2" htmlFor="description">
               Description
             </label>
@@ -211,7 +211,7 @@ const Modal = ({
               value={data.description}
             ></textarea>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <button
               type="submit"
               className="bg-blue-300 text-white p-3 w-full mt-5 text-lg"

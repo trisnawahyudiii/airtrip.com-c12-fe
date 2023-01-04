@@ -27,52 +27,52 @@ const Modal = ({ modal, setModal, data }) => {
         <div className="bg-blue-300 p-2 font-bold text-lg text-center text-white -mt-4 -mx-4 mb-5 pb-4">
           <p>Ticket Detail</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p htmlFor="departure" className="font-semibold pr-2">
             Invoice Number
           </p>
           <p className="w-[75%] ">{data.invoice_number}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p htmlFor="departure" className="font-semibold pr-2">
             Total price
           </p>
           <p className="w-[75%] ">{data.total_price}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p htmlFor="departure" className="font-semibold pr-2">
             Order date
           </p>
           <p className="w-[75%] ">{parseDateString(data.createdAt)}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Flight type</p>
           <div className="w-[75%]">
             <p>{data.flight_type}</p>
           </div>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Passenger name</p>
           <p className="w-[75%]">{data.passenger.name}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Passenger address</p>
           <p className="w-[75%] ">{data.passenger.address}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Passenger email</p>
           <p className="w-[75%] ">{data.passenger.email}</p>
         </div>
 
         <hr />
         <h3 className="font-bold text-lg">Boarding pass pergi</h3>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Seat</p>
           <p className="w-[75%] ">
             {data.boardingPasses.boarding_pass_pergi.seat}
           </p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Departure</p>
           <p className="w-[75%] ">
             {parseDateString(
@@ -80,7 +80,7 @@ const Modal = ({ modal, setModal, data }) => {
             )}
           </p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Arrival</p>
           <p className="w-[75%] ">
             {parseDateString(
@@ -88,19 +88,19 @@ const Modal = ({ modal, setModal, data }) => {
             )}
           </p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Flight class</p>
           <p className="w-[75%] ">
             {data.boardingPasses.boarding_pass_pergi.flight.flight_class}
           </p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Price</p>
           <p className="w-[75%] ">
             {data.boardingPasses.boarding_pass_pergi.flight.price}
           </p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Airplane</p>
           <p className="w-[75%] ">{`${data.boardingPasses.boarding_pass_pergi.flight.airplane.manufacture} ${data.boardingPasses.boarding_pass_pergi.flight.airplane.model_number}`}</p>
         </div>
@@ -108,13 +108,13 @@ const Modal = ({ modal, setModal, data }) => {
           <>
             <hr />
             <h3 className="font-bold text-lg">Boarding pass pulang</h3>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <p className="font-semibold pr-2">Seat</p>
               <p className="w-[75%] ">
                 {data.boardingPasses.boarding_pass_pulang.seat}
               </p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <p className="font-semibold pr-2">Departure</p>
               <p className="w-[75%] ">
                 {parseDateString(
@@ -122,7 +122,7 @@ const Modal = ({ modal, setModal, data }) => {
                 )}
               </p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <p className="font-semibold pr-2">Arrival</p>
               <p className="w-[75%] ">
                 {parseDateString(
@@ -130,25 +130,25 @@ const Modal = ({ modal, setModal, data }) => {
                 )}
               </p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <p className="font-semibold pr-2">Flight class</p>
               <p className="w-[75%] ">
                 {data.boardingPasses.boarding_pass_pulang.flight.flight_class}
               </p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <p className="font-semibold pr-2">Price</p>
               <p className="w-[75%] ">
                 {data.boardingPasses.boarding_pass_pulang.flight.price}
               </p>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               <p className="font-semibold pr-2">Airplane</p>
               <p className="w-[75%] ">{`${data.boardingPasses.boarding_pass_pulang.flight.airplane.manufacture} ${data.boardingPasses.boarding_pass_pulang.flight.airplane.model_number}`}</p>
             </div>
           </>
         ) : null}
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <p className="font-semibold pr-2">Airplane</p>
           <p className="w-[75%] ">{`${data.boardingPasses.boarding_pass_pulang.flight.airplane.manufacture} ${data.boardingPasses.boarding_pass_pulang.flight.airplane.model_number}`}</p>
         </div>
