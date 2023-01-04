@@ -12,7 +12,7 @@ function parseDateString(date) {
 
 const Modal = ({ modal, setModal, data }) => {
   if (!data) return null;
-
+  console.log(data);
   return (
     <PureModal
       isOpen={modal}
@@ -147,10 +147,6 @@ const Modal = ({ modal, setModal, data }) => {
             </div>
           </>
         ) : null}
-        <div className="flex justify-between items-center">
-          <p className="font-semibold pr-2">Airplane</p>
-          <p className="w-[75%] ">{`${data.boardingPasses.boarding_pass_pulang.flight.airplane.manufacture} ${data.boardingPasses.boarding_pass_pulang.flight.airplane.model_number}`}</p>
-        </div>
       </div>
     </PureModal>
   );
