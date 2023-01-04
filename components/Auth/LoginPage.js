@@ -25,8 +25,19 @@ const Login = () => {
 
     axios
       .post("/api/auth/login", authenticationRequest)
-      .then((res) => {
+      .then(async (res) => {
         cookie.set("accessToken", res.data.data.accessToken, { expires: 7 });
+        let role;
+        await axios
+          .get("/api/auth/whoami", {
+            headers: { Authorization: `Bearer ${res.data.data.accessToken}` },
+          })
+          .then((response) => {
+            role = response.data.data.data.role.name;
+          });
+        if (role === "ADMIN") {
+          return Router.push("/admin");
+        }
         Router.push("/");
       })
       .catch((error) => {

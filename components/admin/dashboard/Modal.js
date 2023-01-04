@@ -11,7 +11,6 @@ function parseDateString(date) {
 }
 
 const Modal = ({ modal, setModal, data }) => {
-  console.log(data);
   if (!data) return null;
 
   return (
