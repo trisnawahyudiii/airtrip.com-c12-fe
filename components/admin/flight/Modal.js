@@ -28,7 +28,9 @@ const Modal = ({
     }
 
     axios({
-      url: data.id ? `/flights/update/${data.id}` : "/flights/create",
+      url:
+        "https://airtrip-be-production.up.railway.app" +
+        (data.id ? `/flights/update/${data.id}` : "/flights/create"),
       method: data.id ? "PUT" : "POST",
       data: {
         ...data,
