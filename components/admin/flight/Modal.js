@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
 
+import cookie from 'js-cookie'
+
 const Modal = ({
   modal,
   setModal,
@@ -38,7 +40,7 @@ const Modal = ({
         arrival: new Date(data.arrival).toISOString(),
       },
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${cookie.get("accessToken")}`,
       },
     })
       .then((response) => {
