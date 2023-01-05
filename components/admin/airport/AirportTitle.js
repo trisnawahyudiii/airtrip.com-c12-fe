@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 
 const AirportTitle = () => {
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
   return (
     <>
       <div className="mr-6">
@@ -11,7 +11,7 @@ const AirportTitle = () => {
       </div>
 
       <div className="flex flex-wrap items-start justify-end -mb-3">
-        <button
+        {/* <button
           className="inline-flex px-5 py-3 text-white bg-purple-600 hover:bg-purple-700 focus:bg-purple-700 rounded-md ml-6 mb-3"
           onClick={() => setModal(true)}
         >
@@ -30,8 +30,8 @@ const AirportTitle = () => {
             />
           </svg>
           Create new airport
-        </button>
-        <Modal modal={modal} setModal={setModal} />
+        </button> */}
+        {/* <Modal modal={modal} setModal={setModal} /> */}
       </div>
     </>
   );
