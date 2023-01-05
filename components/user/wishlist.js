@@ -6,7 +6,7 @@ import cookie from "js-cookie";
 
 // components
 import UserLayout from "../../layouts/UserLayout";
-import WishlistCard from "../Cards/WishlistCard";
+import WishlistCard from "../Cards/Wishlistcard";
 import { Backdrop } from "@mui/material";
 import { CircularProgress } from "@mui/material";
 
