@@ -1,10 +1,12 @@
 import Airplane from "../../components/admin/airplane/Airplane";
 import Layout from "../../layouts/admin/Layout";
-
-export default function airplanePage() {
+import { getServerSideProps } from "./index";
+export default function airplanePage({ user }) {
   return (
-    <Layout title="Airplane">
+    <Layout title="Airplane" user={user}>
       <Airplane />
     </Layout>
   );
 }
+
+export { getServerSideProps };

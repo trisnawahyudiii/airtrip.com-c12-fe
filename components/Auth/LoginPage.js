@@ -35,6 +35,7 @@ const Login = () => {
           .then((response) => {
             role = response.data.data.data.role.name;
           });
+        console.log(role);
         if (role === "ADMIN") {
           return Router.push("/admin");
         }
