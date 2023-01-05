@@ -6,15 +6,7 @@ import cookie from "js-cookie";
 import Link from "next/link";
 
 // components
-import {
-  Avatar,
-  Box,
-  Tooltip,
-  IconButton,
-  Divider,
-  MenuItem,
-  ListItemIcon,
-} from "@mui/material";
+import { Avatar, Box, Tooltip, IconButton, Divider, MenuItem, ListItemIcon } from "@mui/material";
 
 import Menu from "@mui/material/Menu";
 
@@ -187,11 +179,7 @@ const Navbar = ({ userData }) => {
 
                       <Avatar
                         alt="user avatar"
-                        src={
-                          userData.image
-                            ? userData.image
-                            : "/img/default-profile.jpg"
-                        }
+                        src={userData.image ? userData.image : "/img/default-profile.jpg"}
                       />
                     </IconButton>
                   </Box>
@@ -248,13 +236,17 @@ const Navbar = ({ userData }) => {
                       </MenuItem>
                     </Link>
 
-                    <MenuItem>
-                      <ListItemIcon>
-                        <BookmarksIcon fontSize="small" />
-                      </ListItemIcon>
-                      Wishlist
-                    </MenuItem>
+                    <Link href="/users/wishlist">
+                      <MenuItem>
+                        <ListItemIcon>
+                          <BookmarksIcon fontSize="small" />
+                        </ListItemIcon>
+                        Wishlist
+                      </MenuItem>
+                    </Link>
+
                     <Divider />
+
                     <MenuItem onClick={handleLogout}>
                       <ListItemIcon>
                         <Logout fontSize="small" />
